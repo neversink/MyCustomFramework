@@ -29,7 +29,7 @@ public class DownloadImgUtils {
             byte[] buf = new byte[512];
             int len = 0;
             while ((len = is.read(buf)) != -1) {
-                fos.write(buf);
+                fos.write(buf, 0, len);
             }
             fos.flush();
             return true;

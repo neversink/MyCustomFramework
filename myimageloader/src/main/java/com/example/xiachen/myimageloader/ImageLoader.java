@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
 
@@ -130,8 +131,8 @@ public class ImageLoader {
                     ImageView image = holder.imageView;
                     String path = holder.path;
 
-                    if (imageView.getTag().equals(path)) {
-                        imageView.setImageBitmap(bm);
+                    if (image.getTag().equals(path)) {
+                        image.setImageBitmap(bm);
                     }
                 }
             };
@@ -187,8 +188,7 @@ public class ImageLoader {
                 addBitmapToLruCache(path, bm);
                 refreashBitmap(path, imageView, bm);
                 mSemaphoreThreadPool.release();
-
-
+                Log.d(TAG, "task finish");
             }
         };
     }
